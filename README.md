@@ -1,1 +1,1 @@
-# Deep-learning
+# Easy! 딥러닝
