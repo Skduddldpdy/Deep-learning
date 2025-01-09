@@ -29,5 +29,39 @@
   > - 자연어 처리에서 주로 사용 (pad 토큰 때문에)
 ## 8-3 
 2. Loss landscape가 꼬불해지는 문제
+   > - 깊게 만들수록 loss 모양이 이상해짐
+   > - ResNet의 skip-connection이 대표적인 해결 방안 중 하나
+   >> : Skip Connection이란 신경망의 한 층 또는 여러 층의 출력을 다음 층의 입력에 직접 더하는 연결
+## 8-4,5,6
+3. Overfitting 과적합
+   : Training 땐 잘하는 데 Test 때 못하는 것
+   > - 모델 경량화 : 입력과 출력 간의 관계를 복잡하게 하지 말고 모델을 단순하게 만들음
+   > - data augumentation, Dropout, Regularization 등으로 해결
+- data augumentation 데이터 증강
+  > - 데이터를 더 구하기 힘드면 자르고, 돌리거나 찌부시키는 등 다양하게 우려먹어서 데이터 증가
+- Drop out <br>
+  : 랜덤하게 노드 가려보면서 학습
+  > - 적용시키고 싶은 layer에 dropout 적용, 살릴 확률 p는 hyperparameter
+  > - 네트워크에 통과 시킬 때마다 살릴 노드 다시 고름 (데이터 마다 다시 정함)
+  > - test 땐 전원 살림
+  > - 노드가 필요 이상으로 많다면 -> loss를 잘 줄이지만 기계적으로 정답을 맞힐 뿐 -> overfitting -> dropout -> 각 노드가 의미 있는 특징을 뽑음
+- Regularization <br>
+  : loss에 weight의 크기를 더해서 같이 고려하려 함
+  > - $L$ 대신 $L + \lambda \| \mathbf{w} \|_p^p$를 loss로 사용
+  >>  p가 1이면 l1-regularization, p가 2면 l2-regularization
+  >> ![image](https://github.com/user-attachments/assets/50fd956d-06bd-4bce-acff-98f870c4f98b)
+  > - weight를 줄이려고 하는 이유
+  >> 1. loss 줄이는 데 별 영향 없는 weight는 0으로 => 모델 경량화 (큰 weight는 더 복잡한 모델을 의미)
+  >> 2. 어느정도 수렴하고 나서도 계속 학습시켜보니 weight가 자꾸 커짐
+  > - 처음엔 L을 많이 고려하다가 L을 어느정도 줄였으면 L이 도로 너무 커지지 않는 선에서 lp(p값)를 줄임
+  > - weight 크기도 같이 고려해 쓸데없이 큰 애들 망치로 두듣겨 줌
+  >> 1. l1 : 기울기가 일정 -> 크건 작건 똑같은 힘드로 두드림 -> 몇개 connection을 없대는 효과 (중요한 것만 살림)
+  >> 2. l2 : weight가 작은 애들은 살살 때리고, 큰 애들은 팍팍 때림
+  > - 수학적으로는 MAP (Maximum A Posteriori)로 해석
+  >> - likelihood만 고려하던 것에서 prior distribution까지 고려하는 것으로 <br>
+  >> 1. l1이면 라틀라시안을 prior distribution
+  >> 2. l2면 가우시안을 prior distribution
+
+
 
 
