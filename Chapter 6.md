@@ -28,7 +28,8 @@
 ## 6-4
 - MLE (Maximum Likelihood Estimation) <br>
   : Loss를 최소화하는 파라미터를 찾는 딥러닝의 학습 과정 <br>
-   즉, 관측된 Measurement가 나올 가능성을 최대로 하는 파라미터 찾는 과정 
+   즉, 관측된 Measurement가 나올 가능성을 최대로 하는 파라미터 찾는 과정
+   데이터가 주어졌을 때 모델을 맞추는 것, -> 머신러닝 Likelihood 최대화 즉 Loss 최소화
   > - BCE Loss와 MSE Loss 모두 Likelihood라는 공통된 뿌리이지만 가정한 분포가 다름 <br>
   >> - Likelihood <br>
   >>  : 앞의 것을 보고 그 속에 숨겨져 있는 뒤에 것을 알아낸다 (조건부 확률 값이지미나 확률분포는 아님, 합 != 1
